@@ -118,7 +118,7 @@ bool place_in_hash_tables (string s) {
 
       // WRITE THE CODE TO SET index TO INDICATE THE OTHER TABLE
       //index = 1 does not work so subtract 1 to get an even number and mod it by 2
-      index = (index-1)%2; //might have to use modular divison to switch
+      index = (index+1)%2; //might have to use modular divison to switch
             
 
 
