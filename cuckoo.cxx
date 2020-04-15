@@ -143,7 +143,7 @@ size_t f(string s, size_t index) {
 
   len = s.size();
 
-  if (index == 0) {
+  if (index == 0) {//first table bc index = 0
     val = s[0];
     val = val % tablesize;
     if (val < 0) val += tablesize;
@@ -166,9 +166,20 @@ size_t f(string s, size_t index) {
     }    
     return val;
 }
-  else {
+  else { //second table bc index = 1
     // TO DO: YOU NEED TO IMPLEMENT THE STEPS TO CALCULATE THE SECOND 
     // HASH FUNCTION in <val>
+    //last half of the algorithm requires this 
+    //collision problem and is a repeat of the first algorithm 
+    val = s[1];
+    val = val % tablesize;
+    if(val < 0) val += tablesize;
+
+    //if it goes back to the first table, return the val
+    if(len == 1)
+      return val; 
+
+
 
     return val;
  }
