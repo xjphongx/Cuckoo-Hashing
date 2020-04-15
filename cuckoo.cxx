@@ -117,8 +117,8 @@ bool place_in_hash_tables (string s) {
       // IN THE OTHER TABLE
 
       // WRITE THE CODE TO SET index TO INDICATE THE OTHER TABLE
-      index = 1;//get index to equal 1 bc the other table is one
-                //might have to use modular divison
+      //index = 1 does not work so subtract 1 to get an even number and mod it by 2
+      index = (index-1)%2; //might have to use modular divison to switch
             
 
 
@@ -138,7 +138,7 @@ bool place_in_hash_tables (string s) {
 // TO DO: complete the ELSE brach
 size_t f(string s, size_t index) {
   size_t po, len;
-  int i,j, val=0, temp;
+  int i, val=0, temp;
   po = 1;
 
   len = s.size();
@@ -172,16 +172,17 @@ size_t f(string s, size_t index) {
     //last half of the algorithm requires this 
     //collision problem and is a repeat of the first algorithm 
     //added j as another index variable
-    val = s[1];
+  
+    val = s[len-1];
     val = val % tablesize;
     if(val < 0) val += tablesize;
 
     //if it goes back to the first table, return the val
     if(len == 1)
       return val; 
-    for (j = 1; j < len; j++)
+    for (i = 1; i < len; i++)
     {
-      temp = s[j];
+      temp = s[len-i-1];
       po *= prime;
 
       po = po % tablesize;
