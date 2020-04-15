@@ -1,5 +1,5 @@
 // Assignment 3: Cuckoo Hashing algorithm
-// Doina Bein
+// Jimmy Phong
 // An open addressing method called Cuckoo Hashing
 // INPUT: an input file containing strings of maximum 255 characters, 
 // one string per line
@@ -26,6 +26,9 @@ size_t f(string, size_t);
 // place a string in one of the hash tables
 bool place_in_hash_tables (string);
 
+/////////////////////////////////////////////////////////////////////////////
+
+
 int main() {
 
   // the strings to be stored in the hash tables
@@ -34,9 +37,9 @@ int main() {
   bool placed;
 
   // clear the tables
-  for(i=0; i< tablesize; i++) {
-      t[i][0] = "";
-      t[i][1] = "";
+  for( i=0; i< tablesize; i++) {
+      t[i][0] = ""; //table 1 
+      t[i][1] = ""; //table 2
   }
 
   char filename[255] = "";
@@ -67,7 +70,7 @@ int main() {
   infile.close();
   return 0;
 }
-
+//////////////////////////////////////////////////////////////////////////////
 
 bool place_in_hash_tables (string s) {
   
@@ -106,13 +109,23 @@ bool place_in_hash_tables (string s) {
       cout << endl;
       // YOU NEED TO WRITE THE CODE TO STORE IN temp THE STRING STORED AT
       // t[pos][index] AND STORE IN t[pos][index] THE STRING temp_s
+      temp = t[pos][index];
+      t[pos][index] = temp_s;
+      temp_s = temp; //swap the strings 
 
       // NOW temp_s CONTAINING THE EVICTED STRING NEEDS TO BE STORED 
       // IN THE OTHER TABLE
 
       // WRITE THE CODE TO SET index TO INDICATE THE OTHER TABLE
+      index = 1;//get index to equal 1 bc the other table is one
+                //might have to use modular divison
+            
+
 
       // WRITE THE CODE TO CALCULATE IN pos THE HASH VALUE FOR temp_s
+      //get the hash value from that table and with temp_s and the index
+      pos = f(temp_s, index);
+
 
       counter ++;
     }
@@ -121,7 +134,7 @@ bool place_in_hash_tables (string s) {
 };
 
 
-// oompute the hash functions
+// compute the hash functions
 // TO DO: complete the ELSE brach
 size_t f(string s, size_t index) {
   size_t po, len;
