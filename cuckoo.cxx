@@ -182,7 +182,15 @@ size_t f(string s, size_t index) {
     for (j = 1; j < len; j++)
     {
       temp = s[j];
-      po* = prime;
+      po *= prime;
+
+      po = po % tablesize;
+      if(po<0) po +=tablesize;
+
+      val += temp * po;
+      val = val % tablesize;
+
+      if(val < 0) val += tablesize;
 
     }
 
