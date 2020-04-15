@@ -138,7 +138,7 @@ bool place_in_hash_tables (string s) {
 // TO DO: complete the ELSE brach
 size_t f(string s, size_t index) {
   size_t po, len;
-  int i, val=0, temp;
+  int i,j, val=0, temp;
   po = 1;
 
   len = s.size();
@@ -171,6 +171,7 @@ size_t f(string s, size_t index) {
     // HASH FUNCTION in <val>
     //last half of the algorithm requires this 
     //collision problem and is a repeat of the first algorithm 
+    //added j as another index variable
     val = s[1];
     val = val % tablesize;
     if(val < 0) val += tablesize;
@@ -178,7 +179,12 @@ size_t f(string s, size_t index) {
     //if it goes back to the first table, return the val
     if(len == 1)
       return val; 
+    for (j = 1; j < len; j++)
+    {
+      temp = s[j];
+      po* = prime;
 
+    }
 
 
     return val;
