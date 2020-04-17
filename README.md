@@ -1,5 +1,5 @@
 # Project-3
-Cuckoo hashing with 41
+Cuckoo Hashing
 
 Group members:
 
